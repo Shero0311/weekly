@@ -1,0 +1,19 @@
+{
+  "name": "weekly",
+  "version": "1.0.0",
+  "description": "周刊文章抓取",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Shero0311/weekly.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "liangxingzhi@360.cn",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.69.0",
+    "xml-parser": "^1.2.1"
+  }
+}
