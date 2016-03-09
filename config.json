@@ -2,11 +2,18 @@
     "sites": [
         {
             "url": "http://taobaofed.org/atom.xml",
-            "lastTime": 1457432634561
+            "type": "rss"
         },
         {
             "url": "http://www.w3ctrain.com/atom.xml",
-            "lastTime": 1457432635953
+            "type": "rss"
+        },
+        {
+            "url": "https://segmentfaule.com",
+            "type": "rss"
+        },
+        {
+            "url": ""
         }
     ]
 }
