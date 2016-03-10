@@ -55,8 +55,8 @@ function parseXml (context) {
 function filterArticles (context) {
     //console.log(config);
     var lastTime = context.site.lastTime || (+new Date() - 3600*24*7*1000);
-    //console.log(lastTime);
-    context.articles = context.articles.filter(article => +new Date(article.published[0]) > lastTime);
+    //console.log(context.articles.length);
+    context.articles = context.articles.filter(article => +new Date(article.published ? article.published[0] : article.updated[0]) > lastTime);
     return context;
 }
 
@@ -76,6 +76,7 @@ function setLastTime(context) {
 //将符合要求的内容发送到文章推荐的接口
 function postArticles (context) {
     context.articles.forEach(article => {
+        article.title[0] = article.title[0]._ ? article.title[0]._ : article.title[0];
         console.log(`推送文章 ${article.title[0]}`);
         request({
             uri: weeklyApi,

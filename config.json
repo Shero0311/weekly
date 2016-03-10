@@ -2,18 +2,38 @@
     "sites": [
         {
             "url": "http://taobaofed.org/atom.xml",
-            "type": "rss"
+            "type": "atom",
+            "lastTime": 1457583395549
         },
         {
             "url": "http://www.w3ctrain.com/atom.xml",
-            "type": "rss"
+            "type": "atom",
+            "lastTime": 1457583396715
         },
         {
-            "url": "https://segmentfaule.com",
-            "type": "rss"
+            "url": "https://segmentfault.com/feeds/blogs",
+            "type": "atom",
+            "lastTime": 1457583395763
         },
         {
-            "url": ""
+            "url": "http://efe.baidu.com/atom.xml",
+            "type": "atom",
+            "lastTime": 1457583394779
+        },
+        {
+            "url": "http://fe.meituan.com/atom.xml",
+            "type": "atom",
+            "lastTime": 1457583394877
+        },
+        {
+            "url": "http://icodeit.org/atom.xml",
+            "type": "atom",
+            "lastTime": 1457583398445
+        },
+        {
+            "url": "http://www.ruanyifeng.com/blog/atom.xml",
+            "type": "atom",
+            "lastTime": 1457583396506
         }
     ]
 }
