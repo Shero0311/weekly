@@ -3,37 +3,77 @@
         {
             "url": "http://taobaofed.org/atom.xml",
             "type": "atom",
-            "lastTime": 1457583395549
+            "lastTime": 1457661281379
         },
         {
             "url": "http://www.w3ctrain.com/atom.xml",
             "type": "atom",
-            "lastTime": 1457583396715
-        },
-        {
-            "url": "https://segmentfault.com/feeds/blogs",
-            "type": "atom",
-            "lastTime": 1457583395763
+            "lastTime": 1457661281308
         },
         {
             "url": "http://efe.baidu.com/atom.xml",
             "type": "atom",
-            "lastTime": 1457583394779
+            "lastTime": 1457661280866
         },
         {
             "url": "http://fe.meituan.com/atom.xml",
             "type": "atom",
-            "lastTime": 1457583394877
+            "lastTime": 1457661281192
         },
         {
             "url": "http://icodeit.org/atom.xml",
             "type": "atom",
-            "lastTime": 1457583398445
+            "lastTime": 1457661286535
         },
         {
             "url": "http://www.ruanyifeng.com/blog/atom.xml",
             "type": "atom",
-            "lastTime": 1457583396506
+            "lastTime": 1457661282047
+        },
+        {
+            "url": "http://www.alloyteam.com/feed/",
+            "type": "rss",
+            "lastTime": 1457661281125
+        },
+        {
+            "url": "http://fex.baidu.com/feed.xml",
+            "type": "rss",
+            "lastTime": 1457661281263
+        },
+        {
+            "url": "http://code.oneapm.com/feed.xml",
+            "type": "rss",
+            "lastTime": 1457661283263
+        },
+        {
+            "url": "http://www.w3cplus.com/rss.xml",
+            "type": "rss",
+            "lastTime": 1457661281093
+        },
+        {
+            "url": "https://imququ.com/rss.html",
+            "type": "rss",
+            "lastTime": 1457661281227
+        },
+        {
+            "url": "http://melonh.com/feed.xml",
+            "type": "rss",
+            "lastTime": 1457661283274
+        },
+        {
+            "url": "http://www.topcss.org/?feed=rss2",
+            "type": "rss",
+            "lastTime": 1457661282550
+        },
+        {
+            "url": "https://www.qianduan.net/rss/",
+            "type": "rss",
+            "lastTime": 1457661281393
+        },
+        {
+            "url": "http://jiongks.name/feed/",
+            "type": "rss",
+            "lastTime": 1457661285058
         }
     ]
 }

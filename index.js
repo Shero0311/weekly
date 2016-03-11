@@ -26,9 +26,10 @@ function init(site) {
 //用request获取rss
 function getRSS(context) {
     return new Promise((resolve, reject) => {
-        request(context.site.url, {timeout: 5000}, (error, response, body) => {
+        request(context.site.url, {timeout: 5000,gzip: true}, (error, response, body) => {
             if (error) {
                 reject(error);
+                console.log(`获取内容出错：${context.site.url}`);
                 return;
             }
             context.body = body;
@@ -43,8 +44,9 @@ function parseXml (context) {
         parseString(context.body, (err, result) => {
             if (err) {
                 reject(err);
-            } else {
-                context.articles = result.feed.entry;
+                console.log(`解析内容出错：${context.site.url}`);
+            } else{
+                context.articles = result.feed ? result.feed.entry : result.rss.channel[0].item;
                 resolve(context);
             }
         });
@@ -53,10 +55,13 @@ function parseXml (context) {
 
 //根据发布时间筛选出符合要求的内容
 function filterArticles (context) {
-    //console.log(config);
+    context.site.lastTime = null;
     var lastTime = context.site.lastTime || (+new Date() - 3600*24*7*1000);
-    //console.log(context.articles.length);
-    context.articles = context.articles.filter(article => +new Date(article.published ? article.published[0] : article.updated[0]) > lastTime);
+    if (context.site.type == "atom") {
+        context.articles = context.articles.filter(article => +new Date (article.published ? article.published[0] : article.updated[0]) > lastTime);
+    } else {
+        context.articles = context.articles.filter(article => +new Date (article.pubDate) > lastTime);
+    }
     return context;
 }
 
@@ -83,8 +88,8 @@ function postArticles (context) {
             method: 'POST',
             body: {
                 title: article.title[0],
-                url: article.link[0].$.href,
-                description: '',
+                url: article.link[0].$ ? article.link[0].$.href : article.link[0],
+                description: '',//article.summary[0],
                 provider: '梁幸芝',
                 tags: ''
             },
@@ -93,7 +98,7 @@ function postArticles (context) {
             if (err) {
                 console.log(err);
             } else {
-                //console.log(body);
+                //console.log(context.body);
             }
         });
     });
