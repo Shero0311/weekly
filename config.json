@@ -3,77 +3,97 @@
         {
             "url": "http://taobaofed.org/atom.xml",
             "type": "atom",
-            "lastTime": 1457661281379
+            "lastTime": 1457668360663
         },
         {
             "url": "http://www.w3ctrain.com/atom.xml",
             "type": "atom",
-            "lastTime": 1457661281308
+            "lastTime": 1457668356703
         },
         {
             "url": "http://efe.baidu.com/atom.xml",
             "type": "atom",
-            "lastTime": 1457661280866
+            "lastTime": 1457668356603
         },
         {
             "url": "http://fe.meituan.com/atom.xml",
             "type": "atom",
-            "lastTime": 1457661281192
+            "lastTime": 1457668356748
         },
         {
             "url": "http://icodeit.org/atom.xml",
             "type": "atom",
-            "lastTime": 1457661286535
+            "lastTime": 1457668359006
         },
         {
             "url": "http://www.ruanyifeng.com/blog/atom.xml",
             "type": "atom",
-            "lastTime": 1457661282047
+            "lastTime": 1457668357650
         },
         {
             "url": "http://www.alloyteam.com/feed/",
             "type": "rss",
-            "lastTime": 1457661281125
+            "lastTime": 1457668356364
         },
         {
             "url": "http://fex.baidu.com/feed.xml",
             "type": "rss",
-            "lastTime": 1457661281263
+            "lastTime": 1457668356330
         },
         {
             "url": "http://code.oneapm.com/feed.xml",
             "type": "rss",
-            "lastTime": 1457661283263
+            "lastTime": 1457668357613
         },
         {
             "url": "http://www.w3cplus.com/rss.xml",
             "type": "rss",
-            "lastTime": 1457661281093
+            "lastTime": 1457668356673
         },
         {
             "url": "https://imququ.com/rss.html",
             "type": "rss",
-            "lastTime": 1457661281227
+            "lastTime": 1457668356806
         },
         {
             "url": "http://melonh.com/feed.xml",
             "type": "rss",
-            "lastTime": 1457661283274
+            "lastTime": 1457668357666
         },
         {
             "url": "http://www.topcss.org/?feed=rss2",
             "type": "rss",
-            "lastTime": 1457661282550
+            "lastTime": 1457668357957
         },
         {
             "url": "https://www.qianduan.net/rss/",
             "type": "rss",
-            "lastTime": 1457661281393
+            "lastTime": 1457668356827
         },
         {
             "url": "http://jiongks.name/feed/",
             "type": "rss",
-            "lastTime": 1457661285058
+            "lastTime": 1457668358812
+        },
+        {
+            "url": "https://imochen.com/atom.xml",
+            "type": "atom",
+            "lastTime": 1457668356766
+        },
+        {
+            "url": "http://www.maxzhang.com/atom.xml",
+            "type": "atom",
+            "lastTime": 1457667955745
+        },
+        {
+            "url": "https://www.phodal.com/blog/feeds/atom/",
+            "type": "atom",
+            "lastTime": 1457668358431
+        },
+        {
+            "url": "http://qianduan.guru/feed.xml",
+            "type": "rss",
+            "lastTime": 1457668361566
         }
     ]
 }
