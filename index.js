@@ -86,12 +86,13 @@ function postArticles (context) {
     context.articles.forEach(article => {
         article.title[0] = article.title[0]._ ? article.title[0]._ : article.title[0];
         console.log(`推送文章 ${article.title[0]}`);
-        let description = (article.summary && article.summary[0]) || (article.description && article.description[0]) || '';
+        let description = (article.content && article.content[0]) || (article.summary && article.summary[0]) || (article.description && article.description[0]) || '';
         if (typeof description != 'string') {
             description = description._;
         }
+        description = description.replace(/<[^>]+>/g,"");
         description = description.substr(0, 400);
-        request({
+        let postData = {
             uri: weeklyApi,
             method: 'POST',
             body: {
@@ -102,7 +103,12 @@ function postArticles (context) {
                 tags: ''
             },
             json: true
-        }, (err, response, body) => {
+        };
+        if (process.env.DEBUG) {
+            console.log(`发送数据到周刊接口：${JSON.stringify(postData, null, 4)}`);
+            return;
+        }
+        request(postData, (err, response, body) => {
             if (err) {
                 console.log(err);
             } else {
