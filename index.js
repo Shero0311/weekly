@@ -6,7 +6,10 @@ const parseString = require('xml2js').parseString;
 const configFile = './configure.json';
 const config = require(configFile);
 
-const arrlabel = ['Javascript', '前端开发', '前端', '函数', '编程', 'CSS', 'web安全', 'SVG', 'HTTP', 'web安全', 'promise', 'npm','mvc'];
+const labelFile = './labels.json';
+const labelsFile = require(labelFile);
+const arrlabel = labelsFile.arrlabel;
+//const arrlabel = ['Javascript', '前端开发', '前端', '函数', '编程', 'CSS', 'web安全', 'SVG', 'HTTP', 'web安全', 'promise', 'npm','mvc'];
 
 const weeklyApi = 'http://www.75team.com/weekly/admin/article.php?action=add';
 
@@ -93,11 +96,10 @@ function postArticles (context) {
             description = description._;
         }
 
-        //var htmltext = JSON.stringify(article).replace(/<[^>]+>/g,"").match(/前端/gi);
-        
         var htmltext = JSON.stringify(article).replace(/<[^>]+>/g,"");
         var flag = 0;
         console.log('flag= ' + flag);
+        console.log(arrlabel);
         var labels = arrlabel.map(function(label) {
             var pattern = new RegExp(label, 'gi');
             var ret = htmltext.match(pattern);
@@ -117,41 +119,18 @@ function postArticles (context) {
 
         });
         console.log('统计后的flag = ' + flag);
-        //labels.length = flag;
         labels.sort(function(a, b) {
             return b.count - a.count;
         });
-        labels.length = flag;
-        //if (labels.length) {
-        //console.log('labels.length = ' + labels.length);
-        //console.log(labels);
-        //var tags = labels[0].label + ' ' + labels[1].label;
-        //}
+        
         var tags = '';
-        switch (labels.length) {
-            case 0:
-                tags = '';
-                break;
-            case 1:
-                //console.log(labels);
-                tags = labels[0].label;
-                break;
-            case 2:
-                tags = labels[0].label + labels[1].label;
-                break;
-            case 3:
-                tags = labels[0].label + labels[1].label + labels[2].label;
-                break;
-            case 4:
-                tags = labels[0].label + labels[1].label + labels[2].label + labels[3].label;
-                break;
-            default:
-                tags = labels[0].label + labels[1].label + labels[2].label + labels[3].label + labels[4].label;
-                break;
+        if (flag >= 1) {
+            tags = labels[0].label;
+            for (var i = 1; i < flag && i < 5; i++) {
+                tags = tags + ',' + labels[i].label;
+            }
         }
-        //var length = htmltext ? htmltext.length : 0;
-        //var htmltext = length ? htmltext[0] : '';
-        //console.log('标签(前端)个数是：' + length);
+
         description = description.replace(/<[^>]+>/g,"");
         description = description.substr(0, 400);
         let postData = {
