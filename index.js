@@ -5,11 +5,7 @@ const fs = require('fs');
 const parseString = require('xml2js').parseString;
 const configFile = './configure.json';
 const config = require(configFile);
-
-const labelFile = './labels.json';
-const labelsFile = require(labelFile);
-const arrlabel = labelsFile.arrlabel;
-//const arrlabel = ['Javascript', '前端开发', '前端', '函数', '编程', 'CSS', 'web安全', 'SVG', 'HTTP', 'web安全', 'promise', 'npm','mvc'];
+const label = require('./label.js');
 
 const weeklyApi = 'http://www.75team.com/weekly/admin/article.php?action=add';
 
@@ -95,42 +91,8 @@ function postArticles (context) {
         if (typeof description != 'string') {
             description = description._;
         }
-
-        var htmltext = JSON.stringify(article).replace(/<[^>]+>/g,"");
-        var flag = 0;
-        console.log('flag= ' + flag);
-        console.log(arrlabel);
-        var labels = arrlabel.map(function(label) {
-            var pattern = new RegExp(label, 'gi');
-            var ret = htmltext.match(pattern);
-            if (ret) {
-                flag += 1;
-                console.log(ret[0] + ' ' +ret.length);
-                return {
-                    label: label,
-                    count: ret.length
-                };
-            } else {
-                return {
-                    label: null,
-                    count: 0
-                };
-            }
-
-        });
-        console.log('统计后的flag = ' + flag);
-        labels.sort(function(a, b) {
-            return b.count - a.count;
-        });
-        
-        var tags = '';
-        if (flag >= 1) {
-            tags = labels[0].label;
-            for (var i = 1; i < flag && i < 5; i++) {
-                tags = tags + ',' + labels[i].label;
-            }
-        }
-
+        //调用标签获取函数
+        var tags = label(article);
         description = description.replace(/<[^>]+>/g,"");
         description = description.substr(0, 400);
         let postData = {
