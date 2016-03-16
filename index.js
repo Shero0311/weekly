@@ -108,7 +108,7 @@ function postArticles (context) {
             json: true
         };
         if (process.env.DEBUG) {
-            console.log(`发送数据到周刊接口：${JSON.stringify(postData, null, 4)}`);
+            //console.log(`发送数据到周刊接口：${JSON.stringify(postData, null, 4)}`);
             return;
         }
         request(postData, (err, response, body) => {
