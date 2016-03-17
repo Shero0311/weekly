@@ -3,23 +3,27 @@ const objlabels = labelFile.labels;
 
 function label(article) {
     //console.log("article = " + article);
-    var titletext = article.title;
+    var titleret = '';
+    if(article.title) {
+        titletext = article.title;
+    }
     var htmltext = JSON.stringify(article).replace(/<[^>]+>/g,"");
-    console.log("htmltext = " + htmltext);
     var labels = [];
     for (var prop in objlabels) {
         var count = 0;
         var arrlabel = objlabels[prop];
         var len = arrlabel.length;
         for (var i = 0; i < len; i++) {
-            if(typeof(arrlabel[i]) != "string") {
-                pattern = arrlabel[i].toString + 'gi';
-            } else {
-                var pattern = new RegExp(arrlabel[i], 'gi');
-            }
+            //console.log("标签是：" + arrlabel[i]);
+            var pattern = new RegExp(arrlabel[i], 'gi');
+            if(titletext)
+                var titleret = JSON.stringify(titletext).match(pattern);
+            //console.log("pattern = " + pattern);
+            //console.log("pattern类型" + typeof(pattern));
             var ret = htmltext.match(pattern);
-            var titleret = JSON.stringify(titletext).match(pattern);
             if (ret) {
+
+                console.log("标签是："+ pattern + "ret是：" + ret);
                 count += ret.length;
                 if (titleret) {
                     count += 5;
@@ -43,10 +47,12 @@ function label(article) {
     var tags = '';
 
     if (flag > 0) {
-        tags = labels[0].label;
-        for (var i = 1; i < flag && i < 5; i++) {
-            tags = tags + ',' + labels[i].label;
-        }
+        labels = labels.filter(label => label.count > 5).slice(0,5).map(labelvalue => labelvalue.label);
+        tags = labels.join(",");
+        //for (var i = 1; i < flag && i < 5; i++) {
+            
+        //    tags = tags + ',' + labels[i].label;
+        //}
         console.log("tags = " + tags);
         return tags;
     }

@@ -3,7 +3,7 @@
 const request = require('request');
 const fs = require('fs');
 const parseString = require('xml2js').parseString;
-const configFile = './configure.json';
+const configFile = './config.json';
 const config = require(configFile);
 const label = require('./label.js');
 
@@ -102,7 +102,7 @@ function postArticles (context) {
                 title: article.title[0],
                 url: article.link[0].$ ? article.link[0].$.href : article.link[0],
                 description: description,
-                provider: '梁幸芝Shero',
+                provider: '小馒头不是旺仔',
                 tags: tags
             },
             json: true
