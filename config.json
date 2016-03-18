@@ -96,6 +96,14 @@
         {
             "url": "http://aotu.io/atom.xml",
             "type": "atom"
+        },
+        {
+            "url": "http://ucren.com/blog/feed",
+            "type": "rss"
+        },
+        {
+            "url": "http://stylechen.com/feed",
+            "type": "rss"
         }
     ]
 }
