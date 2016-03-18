@@ -29,7 +29,7 @@ function init(site) {
 //用request获取rss
 function getRSS(context) {
     return new Promise((resolve, reject) => {
-        request(context.site.url, {timeout: 5000, gzip: true, headers: {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36'}}, (error, response, body) => {
+        request(context.site.url, {timeout: 10000, gzip: true, headers: {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36'}}, (error, response, body) => {
             if (error) {
                 reject(error);
                 console.log(`获取内容出错：${context.site.url}`);
@@ -59,7 +59,7 @@ function parseXml (context) {
 
 //根据发布时间筛选出符合要求的内容
 function filterArticles (context) {
-    context.site.lastTime = null;
+    //context.site.lastTime = null;
     var lastTime = context.site.lastTime || (+new Date() - 3600*24*7*1000);
     if (context.site.type == "atom") {
         context.articles = context.articles.filter(article => +new Date (article.published ? article.published[0] : article.updated[0]) > lastTime);
@@ -102,7 +102,7 @@ function postArticles (context) {
                 title: article.title[0],
                 url: article.link[0].$ ? article.link[0].$.href : article.link[0],
                 description: description,
-                provider: '小馒头不是旺仔',
+                provider: '梁幸芝Shero',
                 tags: tags
             },
             json: true

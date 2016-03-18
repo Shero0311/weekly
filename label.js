@@ -8,18 +8,17 @@ function label(article) {
         titletext = article.title;
     }
     var htmltext = JSON.stringify(article).replace(/<[^>]+>/g,"");
+    //console.log("articletext = " + article);
     var labels = [];
     for (var prop in objlabels) {
         var count = 0;
         var arrlabel = objlabels[prop];
         var len = arrlabel.length;
         for (var i = 0; i < len; i++) {
-            //console.log("标签是：" + arrlabel[i]);
             var pattern = new RegExp(arrlabel[i], 'gi');
-            if(titletext)
+            if(titletext) {
                 var titleret = JSON.stringify(titletext).match(pattern);
-            //console.log("pattern = " + pattern);
-            //console.log("pattern类型" + typeof(pattern));
+            }
             var ret = htmltext.match(pattern);
             if (ret) {
 
@@ -47,7 +46,7 @@ function label(article) {
     var tags = '';
 
     if (flag > 0) {
-        labels = labels.filter(label => label.count > 5).slice(0,5).map(labelvalue => labelvalue.label);
+        labels = labels.filter(label => label.count > 4).slice(0,5).map(labelvalue => labelvalue.label);
         tags = labels.join(",");
         //for (var i = 1; i < flag && i < 5; i++) {
             
