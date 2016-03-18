@@ -5,7 +5,7 @@ const fs = require('fs');
 const parseString = require('xml2js').parseString;
 const configFile = './config.json';
 const config = require(configFile);
-const label = require('./label.js');
+const getLabel = require('./getLabel.js');
 
 const weeklyApi = 'http://www.75team.com/weekly/admin/article.php?action=add';
 
@@ -29,7 +29,13 @@ function init(site) {
 //用request获取rss
 function getRSS(context) {
     return new Promise((resolve, reject) => {
-        request(context.site.url, {timeout: 10000, gzip: true, headers: {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36'}}, (error, response, body) => {
+        request(context.site.url, {
+            timeout: 10000,
+            gzip: true,
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36'
+            }
+        }, (error, response, body) => {
             if (error) {
                 reject(error);
                 console.log(`获取内容出错：${context.site.url}`);
@@ -92,7 +98,7 @@ function postArticles (context) {
             description = description._;
         }
         //调用标签获取函数
-        var tags = label(article);
+        var tags = getLabel(article);
         description = description.replace(/<[^>]+>/g,"");
         description = description.substr(0, 400);
         let postData = {
