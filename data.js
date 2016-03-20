@@ -1,3 +1,0 @@
-const arrlabel = ['',''];
-
-exports
