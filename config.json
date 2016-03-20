@@ -99,6 +99,14 @@
             "url": "http://aotu.io/atom.xml",
             "type": "atom",
             "lastTime": 1458460500375
+        },
+        {
+            "url": "http://ucren.com/blog/feed",
+            "type": "rss"
+        },
+        {
+            "url": "http://stylechen.com/feed",
+            "type": "rss"
         }
     ]
 }
