@@ -20,7 +20,7 @@ function label(article) {
             var ret = htmltext.match(pattern);
             if (ret) {
 
-                console.log("标签是："+ pattern + "ret是：" + ret);
+                //console.log("标签是："+ pattern + "ret是：" + ret);
                 count += ret.length;
                 if (titleret) {
                     count += 5;
@@ -39,14 +39,14 @@ function label(article) {
         return b.count - a.count;
     });
 
-    console.log(labels);
+    //console.log(labels);
     var flag = labels.length;
     var tags = '';
 
     if (flag > 0) {
         labels = labels.filter(label => label.count > 4).slice(0,5).map(labelvalue => labelvalue.label);
         tags = labels.join(",");
-        console.log("tags = " + tags);
+        //console.log("tags = " + tags);
         return tags;
     }
     return null;
