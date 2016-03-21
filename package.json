@@ -8,11 +8,13 @@
     "url": "git@github.com:Shero0311/weekly.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "debug": "DEBUG=label,index node src/index.js",
+    "start": "node src/index.js"
   },
   "author": "liangxingzhi@360.cn",
   "license": "ISC",
   "dependencies": {
+    "debug": "^2.2.0",
     "request": "^2.69.0",
     "xml2js": "^0.4.16"
   }

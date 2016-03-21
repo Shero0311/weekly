@@ -3,13 +3,14 @@
 const request = require('request');
 const fs = require('fs');
 const parseString = require('xml2js').parseString;
-const configFile = './config.json';
-const config = require(configFile);
+const configFile = __dirname + '/../config/sites.json';
+const sites = require(configFile);
 const getLabel = require('./getLabel.js');
+const debug = require('debug')('index');
 
 const weeklyApi = 'http://www.75team.com/weekly/admin/article.php?action=add';
 
-config.sites.forEach(site => {
+sites.forEach(site => {
     init(site)
         .then(getRSS)
         .then(parseXml)
@@ -43,6 +44,7 @@ function getRSS(context) {
             }
             context.body = body;
             resolve(context);
+            debug(`Response content: ${body}`);
         });
     });
 }
@@ -97,7 +99,7 @@ function filterArticles (context) {
 function setLastTime(context) {
     context.site.lastTime = +new Date();
     return new Promise((resolve, reject) => {
-        fs.writeFile(configFile, JSON.stringify(config, null, 4), err => {
+        fs.writeFile(configFile, JSON.stringify(sites, null, 4), err => {
             if (err) {
                 return reject(err);
             }
@@ -123,15 +125,13 @@ function postArticles (context) {
             },
             json: true
         };
-        if (process.env.DEBUG) {
+        if (process.env.DEBUG === 'index') {
             console.log(`发送数据到周刊接口：${JSON.stringify(postData, null, 4)}`);
             return;
         }
         request(postData, (err, response, body) => {
             if (err) {
                 console.log(err);
-            } else {
-                //console.log(context.body);
             }
         });
     });

@@ -1,14 +1,14 @@
-module.exports = {
+{
     "JavaScript": [ "JavaScript", "ES ?6", "ES ?2015"],
     "ES2015": ["ES ?6", "ES ?2015", "ecmascript", "babel", "(箭头函数|Promise|generator|async|await)"],
     "HTTP": [ "http[^:]", "OCSP", "HPKP", "SSL", "HSTS", "CSP", "请求头", "响应头"],
     "HTML5": [ "HTML ?5", "h5"],
     "CSS": ["css3?", "flex ?box", "(圆角|阴影|渐变)"],
-    "函数式编程": ["函数式", "FP\W"],
-    "Node.js": ["Nodejs", "npm", "Node\W"],
-    "Vue.js": ["Vue\.?js"],
+    "函数式编程": ["函数式", "FP\\W"],
+    "Node.js": ["Nodejs", "npm", "Node\\W"],
+    "Vue.js": ["Vue\\.?js"],
     "Angular": ["angular"],
-    "React": ["React\W", "React ?Native", "Flux"],
+    "React": ["React\\W", "React ?Native", "Flux"],
     "Webpack": ["webpack"],
     "Gulp": ["gulp"],
     "Grunt": ["grunt"],
@@ -26,4 +26,4 @@ module.exports = {
     "测试": ["(单元|代码)测试", "(Karma|mocha|sinon)"],
     "工具": ["工具"],
     "服务端": ["(PHP|nginx|apache)"]
-};
+}

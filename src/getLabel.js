@@ -1,7 +1,7 @@
-const objlabels = require('./labeldata.js');
+const objlabels = require('../config/labels.json');
+const debug = require('debug')('label');
 
 function label(article) {
-    //console.log("article = " + article);
     var titleret = '';
     if(article.title) {
         titletext = article.title;
@@ -20,7 +20,7 @@ function label(article) {
             var ret = htmltext.match(pattern);
             if (ret) {
 
-                //console.log("标签是："+ pattern + "ret是：" + ret);
+                debug("标签是："+ pattern + "ret是：" + ret);
                 count += ret.length;
                 if (titleret) {
                     count += 5;
@@ -39,14 +39,13 @@ function label(article) {
         return b.count - a.count;
     });
 
-    //console.log(labels);
     var flag = labels.length;
     var tags = '';
 
     if (flag > 0) {
         labels = labels.filter(label => label.count > 4).slice(0,5).map(labelvalue => labelvalue.label);
         tags = labels.join(",");
-        //console.log("tags = " + tags);
+        debug("tags = " + tags);
         return tags;
     }
     return null;
